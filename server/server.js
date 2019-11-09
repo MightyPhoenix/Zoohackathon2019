@@ -14,7 +14,7 @@ let server = http.createServer(app);
 
 let port = process.env.PORT || 3300;
 
-server.listen(port,function(err){
+server.listen(port,(err)=>{
     if(err) throw err;
     console.log(`server is running at port : ${port}`);
 })
