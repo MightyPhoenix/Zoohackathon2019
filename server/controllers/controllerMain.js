@@ -179,5 +179,13 @@ router.get('/dashboard',loggedIn,function(req,res){
 
 });
 
+//logout
+router.get('/logout',loggedIn,function(req,res){
+    req.logout();
+    req.flash('success_msg','You are logged out');
+    user = null;
+    res.redirect('/');
+});
+
 
 module.exports = router;
