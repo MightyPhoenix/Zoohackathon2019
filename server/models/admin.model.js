@@ -4,12 +4,9 @@ var adminInfo = mongoose.Schema({
     name:{
         type: String
     },
-    username:{
-        type: String
-    },
-    password:{
+    email:{
         type: String
     }
 });
 
-let Admin = module.exports = mongoose.model('admin',adminInfo);
+let Admin = module.exports = mongoose.model('Admin',adminInfo);
