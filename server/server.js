@@ -5,6 +5,8 @@ const http = require('http');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const exphbs = require('express-handlebars');
+var hbs = exphbs.create({ /* config */ });
 
 let app = express();
 
@@ -17,8 +19,8 @@ const mainController = require('./controllers/controllerMain');
 let server = http.createServer(app);
 
 // VIEW ENGINE
-app.set('views', path.join(__dirname, '/../public/views/'));
-app.set('view engine', 'hbs');
+app.engine('.hbs', exphbs({extname: '.hbs'}));
+app.set('view engine', '.hbs');
 
 app.use(logger('dev'));
 app.use(express.json());

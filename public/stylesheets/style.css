@@ -1,0 +1,13 @@
+html
+{
+    min-height: 100%;
+}
+
+body{
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    background-attachment: fixed ;
+}
+#login-form{
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
