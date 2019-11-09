@@ -8,7 +8,7 @@ var ownerInfo = mongoose.Schema({
         type: String
     },
     password:{
-        type: password
+        type: String
     },
     elephant_list:{
         type: Array

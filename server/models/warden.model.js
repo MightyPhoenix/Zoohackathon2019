@@ -8,7 +8,7 @@ var wardenInfo = mongoose.Schema({
         type: String
     },
     password:{
-        type: password
+        type: String
     },
     state:{
         type: String
@@ -18,4 +18,4 @@ var wardenInfo = mongoose.Schema({
     }
 });
 
-mongoose.model('warden',wardenInfo);warden
+let Warden = module.exports = mongoose.model('warden',wardenInfo);

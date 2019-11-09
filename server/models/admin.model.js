@@ -8,7 +8,7 @@ var adminInfo = mongoose.Schema({
         type: String
     },
     password:{
-        type: password
+        type: String
     }
 });
 
