@@ -1,3 +1,4 @@
+// Modules
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -5,7 +6,7 @@ const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bodyParser = require('body-parser');
 
-
+//MODELS
 let Owner = mongoose.model('Owner');
 let User = mongoose.model('User');
 

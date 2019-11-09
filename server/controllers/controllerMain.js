@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bodyParser = require('body-parser');
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 const fs = require('fs');
 
 
@@ -36,7 +36,7 @@ passport.use(new localStrategy(function(username,password,done){
 
             }
             else{
-                return done(null,false,{message : 'Invalid passpword'})
+                return done(null,false,{message : 'Invalid password'})
             }
         });
     });
