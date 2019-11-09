@@ -40,5 +40,8 @@ router.post('/register',function(req,res){
     });
     
 
+    router.get('/request-movement',function(req,res){
+            res.render('Owner/requestMovement');
+    });
 
 module.exports = router;

@@ -39,4 +39,8 @@ router.post('/approveUser',function(req,res){
     });
 });
 
+router.get('/add-elephant',function(req,res){
+    res.render('Warden/addElephant');
+});
+
 module.exports  = router;
