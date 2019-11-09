@@ -6,12 +6,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const exphbs = require('express-handlebars');
-var hbs = exphbs.create({ /* config */ });
+//var hbs = exphbs.create({ /* config */ });
 
 let app = express();
 
 
-//ROUTES
+//Routing location
 const mainController = require('./controllers/controllerMain');
 
 
