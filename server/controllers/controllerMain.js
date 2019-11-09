@@ -129,7 +129,7 @@ router.get('/dashboard',loggedIn,function(req,res){
           
     }
     else 
-    if(req.user.typeUser == "wdn") {
+    if(req.user.typeUser == "war") {
         userType = "Warden";
        
        // const adminDetails;
