@@ -10,26 +10,35 @@ let Owner = mongoose.model('Owner');
 let User = mongoose.model('User');
 
 
+router.post('/register',function(req,res){
 
-router.get('/verify-email/:id',function(req,res){
-    var id = req.params.id;
-    Owner.findOneAndUpdate({ 
-           _id  : id,
-           emailVerified : false 
-    },{
-            emailVerified : true
-    },
-    function(err,doc){
-            if(!err){
-                    req.flash('success_msg','Email verified!');
-                    res.render('emailVerified');
-            }else {
-                    throw err;
-                    console.log('err' + err);
-                    res.redirect('/');
-            }
+        var email = req.body.email;
+        var password = req.body.password;
+        var name = req.body.name;
+        var about = req.body.about;
+        var state = req.body.state;
+        console.log(`email : ${email}`);
+        var owner = new Owner();
+        var user = new User({
+            username : email,
+            password : password,
+            typeUser : 'onr'
+        });    
+    
+        User.createUser(user, function(err){
+            if(err) throw err;
+    
+            owner.name = name;
+            owner.email = email;
+            owner.state = state;
+            owner.about = about;
+            owner.save(function(err,doc){
+                if(err) throw err;
+                res.send('Registered..');
+            });
+        });
     });
-});
+    
 
 
 module.exports = router;

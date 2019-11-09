@@ -27,7 +27,7 @@ router.post('/register',function(req,res){
     var email = req.body.email;
     var password = req.body.password;
     var name = req.body.name;
-    console.log(`email : ${email}`);
+    console.log(`email : ${email}`);    
     var admin = new Admin();
     var user = new User({
         username : email,
