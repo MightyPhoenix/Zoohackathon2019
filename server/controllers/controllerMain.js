@@ -4,6 +4,8 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
+const bodyParser = require('body-parser');
+
 
 //MODELS
 
@@ -18,7 +20,13 @@ router.get('/login',(req, res, next)=>{
 });
 
 router.get('/signup',(req, res, next)=>{
-    res.render('signup', { title: 'Registration' });
+    res.render('Owner/signUp', { title: 'Registration' });
+});
+
+//POST
+router.post('/login',(req,res,next)=>{
+    email = req.body.email;
+    password = req.body.password;
 });
 
 

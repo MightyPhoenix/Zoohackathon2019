@@ -6,7 +6,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 //var hbs = exphbs.create({ /* config */ });
+
+app.use(bodyParser.urlencoded({
+    extended : true
+}));
+app.use(bodyParser.json());
 
 let app = express();
 
@@ -30,14 +36,12 @@ app.use(cookieParser());
 // STATIC FOLDER
 app.use(express.static(path.join(__dirname, '/../public/')));
 
-
-
-
 //Controller Routes
 
 app.use('/',mainController);
 
 
+// LISTENING
 let port = process.env.PORT || 3300;
 
 server.listen(port,(err)=>{
