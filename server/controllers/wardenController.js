@@ -31,7 +31,12 @@ router.get('/approve',function(req,res){
 
 router.post('/approveUser',function(req,res){
     let id = req.body._id;
-    Owner.findOneAndUpdate({});
+    Owner.findOneAndUpdate({_id : id},{
+        accountVerified : true
+    },function(err,doc){
+        if(err) throw err;
+        res.redirect('/dashboard');
+    });
 });
 
 module.exports  = router;
