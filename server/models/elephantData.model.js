@@ -12,4 +12,4 @@ var deact_adm = mongoose.Schema({
     }
 });
 
-mongoose.model('ElephantData',deact_adm);
+let Elephant = module.exports = mongoose.model('ElephantData',deact_adm);

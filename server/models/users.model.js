@@ -13,7 +13,7 @@ var userSchema = new mongoose.Schema({
         }
 });
 
-var User = module.exports = mongoose.model('ActiveUser',userSchema);
+var User = module.exports = mongoose.model('User',userSchema);
 
 module.exports.createUser = function(newUser,callback) {
 

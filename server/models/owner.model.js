@@ -15,4 +15,4 @@ var ownerInfo = mongoose.Schema({
     }
 });
 
-let Owner = module.exports = mongoose.model('owner',ownerInfo);
+let Owner = module.exports = mongoose.model('Owner',ownerInfo);

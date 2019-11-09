@@ -12,4 +12,4 @@ var adminInfo = mongoose.Schema({
     }
 });
 
-let Admin = module.exports = mongoose.model('admin',adminInfo);
+let Admin = module.exports = mongoose.model('Admin',adminInfo);

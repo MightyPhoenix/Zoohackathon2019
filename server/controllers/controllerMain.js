@@ -8,6 +8,11 @@ const bodyParser = require('body-parser');
 
 
 //MODELS
+let Admin = mongoose.model('Admin');
+let Warden = mongoose.model('Warden');
+let Owner = mongoose.model('Owner');
+let User = mongoose.model('User');
+let Elephant = mongoose.model('ElephantData');
 
 
 // GET
@@ -27,6 +32,10 @@ router.get('/signup',(req, res, next)=>{
 router.post('/login',(req,res,next)=>{
     email = req.body.email;
     password = req.body.password;
+
+
+
+
 });
 
 

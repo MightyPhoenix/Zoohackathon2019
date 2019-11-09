@@ -18,4 +18,4 @@ var wardenInfo = mongoose.Schema({
     }
 });
 
-let Warden = module.exports = mongoose.model('warden',wardenInfo);
+let Warden = module.exports = mongoose.model('Warden',wardenInfo);
