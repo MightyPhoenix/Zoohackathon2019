@@ -8,9 +8,6 @@ const logger = require('morgan');
 
 let app = express();
 
-// STATIC FOLDER
-let publicPath = path.join(__dirname,'/../public/');
-app.use(express.static(publicPath));
 
 //ROUTES
 const mainController = require('./controllers/controllerMain');
@@ -27,11 +24,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '/../public/views/')));
+
+// STATIC FOLDER
+app.use(express.static(path.join(__dirname, '/../public/')));
 
 
 
 
+//Controller Routes
+
+app.use('/',mainController);
 
 
 let port = process.env.PORT || 3300;
