@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 const mainController = require('./controllers/controllerMain');
 const adminController = require('./controllers/adminController');
 const wardenController = require('./controllers/wardenController');
-const ownerContrller = require('./controllers/ownerController');
+const ownerController = require('./controllers/ownerController');
 
 // SERVER
 let server = http.createServer(app);
