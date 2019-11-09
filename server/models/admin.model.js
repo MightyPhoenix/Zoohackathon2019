@@ -4,10 +4,7 @@ var adminInfo = mongoose.Schema({
     name:{
         type: String
     },
-    username:{
-        type: String
-    },
-    password:{
+    email:{
         type: String
     }
 });

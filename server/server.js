@@ -9,6 +9,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 //var hbs = exphbs.create({ /* config */ });
 
+
 let app = express();
 
 app.use(bodyParser.urlencoded({
@@ -18,7 +19,9 @@ app.use(bodyParser.json());
 
 //Routing location
 const mainController = require('./controllers/controllerMain');
-
+const adminController = require('./controllers/adminController');
+const wardenController = require('./controllers/wardenController');
+const ownerContrller = require('./controllers/ownerController');
 
 // SERVER
 let server = http.createServer(app);
@@ -38,7 +41,9 @@ app.use(express.static(path.join(__dirname, '/../public/')));
 //Controller Routes
 
 app.use('/',mainController);
-
+app.use('/admin',adminController);
+//app.use('/warden',wardenController);
+//app.use('/owner',ownerContrller);
 
 
 // LISTENING
