@@ -69,6 +69,10 @@ router.get('/signup',(req, res, next)=>{
     res.render('Owner/signUp', { title: 'Registration' });
 });
 
+router.get('/test',(req, res, next)=>{
+    res.render('test', { title: 'Test' });
+});
+
 //POST
 
 router.post('/login',passport.authenticate('local',

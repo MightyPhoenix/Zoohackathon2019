@@ -17,7 +17,7 @@
 
         <div class="form-group">
             <label>Elephant Alias</label>
-            <input class="form-control" id="exampleInputEmail1" type="text" placeholder="Known Aliases">
+            <input class="form-control" type="text" placeholder="Known Aliases">
         </div>
 
         <div class="form-group">
@@ -25,7 +25,28 @@
             <input class="form-control-file" name="elephantImages" type="file" multiple>
         </div>
 
+        <div class="form-group">
+            <label>Add History Of Elephant</label>
+            <button class="form-control btn btn-warning" id="addmore">Click to Add</button>
+        </div>
+
+        <div id="fieldset">
+
+        </div>
+
 
         <button class="text-center btn btn-success w-100">Create!</button>
     </form>
 </div>
+<script>
+    $("#addmore").click( () => {
+        let i=1;
+        let htmlString = `<div class="form-group">
+                            <label>History ${i}</label>
+                             <input class="form-control" type="text" placeholder="Previous Owner Name">
+                             <input class="form-control" type="text" placeholder="Time Period">
+                       </div>`
+        $("#fieldset").html(htmlString);
+        i++
+    });
+</script>
