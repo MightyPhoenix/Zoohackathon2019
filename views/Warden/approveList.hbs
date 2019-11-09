@@ -1,0 +1,23 @@
+ <table class="table table-striped">
+        <thead>
+                <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>About</th>
+                <th>Action</th>
+                </tr>
+        </thead>
+        <tbody>
+                {{#each list}}
+                <tr>
+                <td>{{this.email}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.about}}</td>
+                <td><form action="/warden/approveUser" method="post">
+                        <input type="hidden" name="_id" value="{{this._id}}">
+                        <input type="submit" value="Verify">
+                </form></td>
+                </tr>
+                {{/each}}
+        </tbody>        
+</table>

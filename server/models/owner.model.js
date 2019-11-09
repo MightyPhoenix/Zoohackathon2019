@@ -4,7 +4,7 @@ var ownerInfo = mongoose.Schema({
     name:{
         type: String
     },
-    username:{
+    email:{
         type: String
     },
     elephant_list:{
@@ -13,8 +13,12 @@ var ownerInfo = mongoose.Schema({
     about:{
         type: String
     },
+    state : {
+        type : String
+    },
     accountVerified:{
-        type: Boolean
+        type: Boolean,
+        default : false     
     },
     emailVerified:{
         type: Boolean

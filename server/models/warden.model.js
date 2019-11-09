@@ -4,10 +4,7 @@ var wardenInfo = mongoose.Schema({
     name:{
         type: String
     },
-    username:{
-        type: String
-    },
-    password:{
+    email:{
         type: String
     },
     state:{

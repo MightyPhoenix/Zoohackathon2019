@@ -76,8 +76,8 @@ app.use(function(req,res,next){
 
 app.use('/',mainController);
 app.use('/admin',adminController);
-//app.use('/warden',wardenController);
-//app.use('/owner',ownerContrller);
+app.use('/warden',wardenController);
+app.use('/owner',ownerController);
 
 
 // LISTENING
