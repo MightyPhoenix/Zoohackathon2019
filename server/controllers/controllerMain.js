@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 
 //MODELS
@@ -67,6 +68,10 @@ router.get('/signup',(req, res, next)=>{
     res.render('Owner/signUp', { title: 'Registration' });
 });
 
+router.get('/test',(req,res,next)=>{
+    res.render('test',{title:'TEST'})
+})
+
 //POST
 
 router.post('/login',passport.authenticate('local',
@@ -75,6 +80,11 @@ router.post('/login',passport.authenticate('local',
     failureFlash : true }),
     function(req,res){
     res.redirect('/dashboard');
+});
+
+router.post('/test',(req,res)=>{
+   let elephantImages = req.files.elephantImages;
+
 });
 
 
