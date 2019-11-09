@@ -14,6 +14,45 @@ let Owner = mongoose.model('Owner');
 let User = mongoose.model('User');
 let Elephant = mongoose.model('ElephantData');
 
+//LOCAL STRATEGY PASSPORT
+
+passport.use(new localStrategy(function(username,password,done){
+
+    User.getUserByUsername(username,function(err,user){
+        if(err) throw err;
+        if(!user){
+            return done(null,false,{message : 'Unknown User'});
+
+        }
+
+        User.comparedPassword(password,user.password,function(err,isMatch){
+            if(err) throw err;
+            if(isMatch){
+
+
+                return done(null,user);
+
+            }
+            else{
+                return done(null,false,{message : 'Invalid passpword'})
+            }
+        });
+    });
+}));
+passport.serializeUser(function(user, done) {
+
+    console.log('userId: '+user._id);
+    done(null, user._id);
+});
+
+passport.deserializeUser(function(id, done) {
+    User.getUserById(id, function(err, user) {
+        done(err, user);
+    });
+});
+
+//LOCAL STRATEGY ENDS
+
 
 // GET
 router.get('/',(req, res, next)=>{
@@ -30,45 +69,6 @@ router.get('/signup',(req, res, next)=>{
 
 //POST
 
-
-
-//localstrategy passport
-
-passport.use(new localStrategy(function(username,password,done){
-       
-    User.getUserByUsername(username,function(err,user){
-            if(err) throw err;
-            if(!user){
-                    return done(null,false,{message : 'Unknown User'});
-
-            }
-
-            User.comparedPassword(password,user.password,function(err,isMatch){
-                    if(err) throw err;
-                    if(isMatch){
-                            
-                            
-                            return done(null,user);
-                            
-                    }
-                    else{
-                            return done(null,false,{message : 'Invalid passpword'})
-                    }
-            });
-    });
-}));
-    passport.serializeUser(function(user, done) {
-
-            console.log('userId: '+user._id);
-            done(null, user._id);
-    });
-    
-    passport.deserializeUser(function(id, done) {
-            User.getUserById(id, function(err, user) {
-            done(err, user);
-            });
-    });
-
 router.post('/login',passport.authenticate('local',
     { successRedirect: '/dashboard',
     failureRedirect: '/',
@@ -78,7 +78,7 @@ router.post('/login',passport.authenticate('local',
 });
 
 
-//localstrategy ends
+
 
 
 
