@@ -10,4 +10,15 @@ body{
 #login-form{
     background-color: whitesmoke;
     border-radius: 5px;
+    padding: 2%;
+    width: 40%;
+    margin: 1%;
+}
+
+.custom-container{
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 2%;
+    width: 40%;
+    margin: 1%;
 }
