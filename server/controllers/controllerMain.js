@@ -6,6 +6,7 @@ const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
+const fs = require('fs');
 
 
 //MODELS
@@ -140,6 +141,9 @@ router.post('/signUp',function(req,res){
     })
     .catch(err =>(console.log(err)));
 });
+router.get('/test',(req,res,next)=>{
+    res.render('test',{title:'TEST'})
+})
 
 //POST
 
@@ -149,6 +153,11 @@ router.post('/login',passport.authenticate('local',
     failureFlash : true }),
     function(req,res){
     res.redirect('/dashboard');
+});
+
+router.post('/test',(req,res)=>{
+   let elephantImages = req.files.elephantImages;
+
 });
 
 
@@ -241,6 +250,14 @@ router.get('/dashboard',loggedIn,function(req,res){
             })
         }
 
+});
+
+//logout
+router.get('/logout',loggedIn,function(req,res){
+    req.logout();
+    req.flash('success_msg','You are logged out');
+    user = null;
+    res.redirect('/');
 });
 
 
