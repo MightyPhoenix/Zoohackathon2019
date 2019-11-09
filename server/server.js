@@ -7,6 +7,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+var passport = require('passport');
+var localStrategy = require('passport-local');
+
+var flash = require('connect-flash');
+var session = require('express-session');
+var expressValidator = require('express-validator');
+var expFileUpload = require('express-fileupload');
 //var hbs = exphbs.create({ /* config */ });
 
 
@@ -16,6 +23,15 @@ app.use(bodyParser.urlencoded({
     extended : true
 }));
 app.use(bodyParser.json());
+
+
+app.use(cookieParser('foo'));
+//express Session
+app.use(session({
+        secret : 'secret',
+        saveUninitialized : true,
+        resave : true
+}));
 
 //Routing location
 const mainController = require('./controllers/controllerMain');
@@ -37,6 +53,24 @@ app.use(cookieParser());
 
 // STATIC FOLDER
 app.use(express.static(path.join(__dirname, '/../public/')));
+
+//passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+//use flash
+app.use(flash());
+
+//global variables
+app.use(function(req,res,next){
+        res.locals.success_msg = req.flash('success_msg');
+        res.locals.error_msg = req.flash('error_msg');
+        res.locals.error = req.flash('error');
+        res.locals.user = req.user || null;
+        next();
+});
+
 
 //Controller Routes
 
