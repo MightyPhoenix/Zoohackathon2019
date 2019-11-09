@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
 
 
 //MODELS
@@ -65,6 +66,79 @@ router.get('/login',(req, res, next)=>{
 
 router.get('/signup',(req, res, next)=>{
     res.render('Owner/signUp', { title: 'Registration' });
+});
+
+router.post('/signUp',function(req,res){
+    var name = req.body.name;
+    var email = req.body.email;
+    var about = req.body.about;
+    var password = req.body.password;
+    
+     
+    var owner = new Owner();
+    var secret = owner._id;
+    var newUser = new User({
+        username : email,       
+        password : password,
+        typeUser : "onr"
+    });
+
+    //test
+    User.findOne({username:email})
+    .then(user =>{
+            if(user){
+                    req.flash("error","Email already registered");
+                    res.redirect('/dashboard');
+            }
+            else{                                
+                User.createUser(newUser,function(err,user){
+                    if(err) throw err;
+    
+                    owner.name = name;
+                    owner.username = email;
+                    owner.about = about;
+                    owner.emailVerified = false;
+                    owner.accountVerified = false;
+                    
+                    owner.save(function(err,doc) {
+                            if(err) {
+                                    throw err;
+                            }
+                            else {
+                                    /*/TODO confirmation mail
+                                     
+                                    var transport = nodemailer.createTransport({
+                                    service:'gmail',
+                                    auth:{
+                                            user:'atiabkalam',
+                                            pass:'kahebole'
+                                            }
+                                    });
+                                    
+                                    var mailBody = `<p>Thankyou for creating your Account Mr. `+req.body.name+`.</p>`+`<p>Please verify your account by clicking this link : <a href='http://192.168.0.39:3001/owner/verify-email/`+secret+`'>click here</a></p>`;
+                                    const mailOptions = {
+                                            from:'atiabkalam@gmail.com',
+                                            to:email,
+                                            subject:'Owner Email Verification!',
+                                            html:mailBody
+                                    };
+                                    transport.sendMail(mailOptions,(err,info)=>{
+                                            if(err)
+                                                    console.log(err);
+                                            else
+                                                    console.log(info);
+                                    });
+                                    //TODO email verification*/
+                                    req.flash('success_msg','account created successfully');
+                                    req.flash('warning_msg','Please Verify your Email!');
+                                    res.redirect('/');
+                            }
+                    });
+    
+            }); 
+            }
+    })
+    .catch(err =>(console.log(err)));
 });
 
 //POST

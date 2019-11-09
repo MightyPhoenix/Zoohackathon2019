@@ -7,11 +7,17 @@ var ownerInfo = mongoose.Schema({
     username:{
         type: String
     },
-    password:{
-        type: String
-    },
     elephant_list:{
         type: Array
+    },
+    about:{
+        type: String
+    },
+    accountVerified:{
+        type: Boolean
+    },
+    emailVerified:{
+        type: Boolean
     }
 });
 
