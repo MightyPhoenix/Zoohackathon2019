@@ -11,21 +11,25 @@ let app = express();
 // STATIC FOLDER
 let publicPath = path.join(__dirname,'/../public/');
 app.use(express.static(publicPath));
+
+//ROUTES
+const mainController = require('./controllers/controllerMain');
+
+
 // SERVER
 let server = http.createServer(app);
 
 // VIEW ENGINE
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/../public/views/'));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/../public/views/')));
 
-//ROUTES
-const mainController = require('./controllers/controllerMain');
+
 
 
 

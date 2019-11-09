@@ -9,3 +9,10 @@ const localStrategy = require('passport-local').Strategy;
 
 
 // GET
+router.get('/',(req, res, next)=>{
+    res.render('index', { title: 'Index' });
+});
+
+
+
+module.exports = router;
