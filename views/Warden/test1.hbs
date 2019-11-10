@@ -1,35 +1,22 @@
 <script>
-    let i=0;
-$(document).ready(function(){
-  $("#customAdd").click(function(){
-    $(`
-    <span>
-        <div class="form-group">
-        <label>History ${i}</label>
-        <input class="form-control" type="text" placeholder="Previous Owner Name">
-        <input class="form-control" type="text" placeholder="Time Period">
-        </div>
-    </span>
-    `).insertAfter("p");
-    i++;
-  });
-});
+    $("#addmore").click( () => {
+        let i=1;
+        let htmlString = `<span><div class="form-group">
+                            <label>History ${i}</label>
+                             <input class="form-control" type="text" placeholder="Previous Owner Name">
+                             <input class="form-control" type="text" placeholder="Time Period">
+                       </div></span>`
+        $(htmlString).insertAfter('p');
+        i++
+    });
 </script>
-
-
- 
-
-<p></p>
-
 
 <div class="custom-container mx-auto" >
     <h1 class="text-center">
         New Elephant Registration
     </h1>
     <hr>
-   
-    <form enctype="multipart/form-data" action="/" method="POST">
-     <button id="customAdd" class="form-control btn btn-warning">add</button>
+    <form enctype="multipart/form-data">
         <div class="form-group">
             <label>Select Owner</label>
             <select class="form-control" id="exampleSelect1">
@@ -46,7 +33,6 @@ $(document).ready(function(){
             <input class="form-control" type="text" placeholder="Known Aliases">
         </div>
 
-       
         <div class="form-group">
             <label>Upload Trunk Picture</label>
             <input class="form-control-file" name="elephantImages" type="file" multiple>
@@ -54,12 +40,13 @@ $(document).ready(function(){
 
         <div class="form-group">
             <label>Add History Of Elephant</label>
-            <button  id="addmore">Click to Add</button>
+            <button class="form-control btn btn-warning" id="addmore">Click to Add</button>
         </div>
 
         <div id="fieldset">
 
         </div>
+        <p></p>
 
         <button class="text-center btn btn-success w-100">Create!</button>
     </form>
