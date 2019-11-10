@@ -1,27 +1,3 @@
-<script>
-    let i=0;
-$(document).ready(function(){
-  $("#customAdd").click(function(){
-    $(`
-    <span>
-        <div class="form-group">
-        <label>History ${i}</label>
-        <input class="form-control" type="text" placeholder="Previous Owner Name">
-        <input class="form-control" type="text" placeholder="Time Period">
-        </div>
-    </span>
-    `).insertAfter("p");
-    i++;
-  });
-});
-</script>
-
-
- 
-
-<p></p>
-
-
 <div class="custom-container mx-auto" >
     <h1 class="text-center">
         New Elephant Registration
@@ -29,10 +5,9 @@ $(document).ready(function(){
     <hr>
    
     <form enctype="multipart/form-data" action="/" method="POST">
-     <button id="customAdd" class="form-control btn btn-warning">add</button>
         <div class="form-group">
             <label>Select Owner</label>
-            <select class="form-control" id="exampleSelect1">
+            <select class="form-control">
                 <option>Santosh</option>
                 <option>Rakesh</option>
                 <option>Mukesh</option>
@@ -54,13 +29,14 @@ $(document).ready(function(){
 
         <div class="form-group">
             <label>Add History Of Elephant</label>
-            <button  id="addmore">Click to Add</button>
+            <input class="form-control" name="elephantHistory" type="text" placeholder="Enter History">
         </div>
 
-        <div id="fieldset">
-
+        <div class="form-group">
+            <label>Veterinarian Check</label>
+            <textarea class="form-control" name="v_check"></textarea>
         </div>
 
-        <button class="text-center btn btn-success w-100">Create!</button>
+        <button type="submit" class="text-center btn btn-success w-100">Create!</button>
     </form>
 </div>
