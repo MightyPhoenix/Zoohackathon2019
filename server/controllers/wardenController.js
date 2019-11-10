@@ -90,6 +90,15 @@ router.get('check-add-elephant',function(req,res){
 });
 
 router.post('/add-elephant',function(req,res){
-    
+    let owner = req.body.owner;
+    let alias = req.body.alias;
+    let elephantPic = req.files.ElephantImages;
+    let history = req.body.history;
+    let vet = req.body.v_check;
+
+    console.log(owner,alias,elephantPic,history,vet);
+    res.redirect('/warden/add-elephant');
+
+
 })
 module.exports  = router;

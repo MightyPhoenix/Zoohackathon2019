@@ -1,15 +1,42 @@
-<div>
-    <form action="/warden/add-elephant" method="post">
-        Name : <input type="text" name="name"><br>
-        Images : <input type="text" name="images"><br>
-        <label>Select Owner</label>
-            <select  id="exampleSelect1" name="owner">
+<div class="custom-container mx-auto" >
+    <h1 class="text-center">
+        New Elephant Registration
+    </h1>
+    <hr>
+
+    <form enctype="multipart/form-data" action="/warden/add-elephant" method="POST">
+        <div class="form-group">
+            <label>Select Owner</label>
+            <select class="form-control">
                 <option>Santosh</option>
                 <option>Rakesh</option>
                 <option>Mukesh</option>
                 <option>Babu</option>
                 <option>Chotu</option>
             </select>
-        <input type="submit" value="submit">
+        </div>
+
+        <div class="form-group">
+            <label>Elephant Alias</label>
+            <input class="form-control" type="text" placeholder="Known Aliases">
+        </div>
+
+
+        <div class="form-group">
+            <label>Upload Trunk Picture</label>
+            <input class="form-control-file" name="elephantImages" type="file" multiple>
+        </div>
+
+        <div class="form-group">
+            <label>Add History Of Elephant</label>
+            <input class="form-control" name="elephantHistory" type="text" placeholder="Enter History">
+        </div>
+
+        <div class="form-group">
+            <label>Veterinarian Check</label>
+            <textarea class="form-control" name="v_check"></textarea>
+        </div>
+
+        <button type="submit" class="text-center btn btn-success w-100">Create!</button>
     </form>
 </div>
