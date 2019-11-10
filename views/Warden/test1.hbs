@@ -18,29 +18,33 @@
     <hr>
     <form enctype="multipart/form-data">
         <div class="form-group">
-            <label>Select Owner</label>
-            <select class="form-control" id="exampleSelect1">
-                <option>Santosh</option>
-                <option>Rakesh</option>
-                <option>Mukesh</option>
-                <option>Babu</option>
-                <option>Chotu</option>
-            </select>
+            <label>Owner Name </label>
+            <input class="form-control" type="text" value="{{owner_id}}" placeholder="Owner Name from backend" disabled>
         </div>
 
         <div class="form-group">
-            <label>Elephant Alias</label>
-            <input class="form-control" type="text" placeholder="Known Aliases">
+            <label>Elephant Name</label>
+            <input class="form-control" type="text" name ="elephant_name" placeholder="Elephant Name">
+        </div>
+
+        {{!-- <div class="form-group">
+            <label>Images</label>   
+            <input class="form-control-file" name="elephantImages" type="file" multiple>       
+            <span id="fooBar"><br>&nbsp;</span>
+        </div> --}}
+
+        <div class="form-group" id="inputArea">
+            <label >Images</label>
         </div>
 
         <div class="form-group">
-            <label>Upload Trunk Picture</label>
-            <input class="form-control-file" name="elephantImages" type="file" multiple>
+            <input class="form-control-file" type="number" name="imageno" id="imageno" placeholder="No of Images to be selected">
+            <button onclick="loop(document.forms[0].imageno.value)">OK</button>
         </div>
 
         <div class="form-group">
-            <label>Add History Of Elephant</label>
-            <button class="form-control btn btn-warning" id="addmore">Click to Add</button>
+            <label>Veterinarian Check</label>
+            <textarea class="form-control" name="v_check"></textarea>
         </div>
 
         <div id="fieldset">
@@ -51,3 +55,37 @@
         <button class="text-center btn btn-success w-100">Create!</button>
     </form>
 </div>
+
+{{!-- <SCRIPT language="javascript">
+function add(i) {
+
+	//Create an input type dynamically.
+	var element = document.createElement("input");
+
+	//Assign different attributes to the element.
+	element.setAttribute("type", "file");
+	element.setAttribute("name", "ElephantImages");
+
+
+	var foo = document.getElementById("fooBar");
+
+	//Append the element in page (in span).
+	foo.appendChild(element);
+    i=i+1;
+    console.log(i);
+}
+</SCRIPT> --}}
+
+<script>
+    function loop(l){
+        var htmlString = `
+            <input class="form-control-file" name="elephantImages0" type="file" multiple>
+            `;
+        for(i=1;i<l;i++){
+            htmlString = htmlString+`
+            <input class="form-control-file" name="elephantImages`+l+`" type="file" multiple>
+            `;
+            $("#inputArea").html(htmlString);
+        }
+    };
+</script>

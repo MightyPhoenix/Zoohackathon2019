@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Warden = mongoose.model('Warden');
 const Owner = mongoose.model('Owner');
+const Elephant = mongoose.model('ElephantData');
 //Routes
 
 router.get('/approve',function(req,res){
@@ -42,5 +43,45 @@ router.post('/approveUser',function(req,res){
 router.get('/add-elephant',function(req,res){
     res.render('Warden/addElephant');
 });
+
+router.get('/test1',function(req,res){
+    res.render('Warden/test1')
+});
+
+/*router.post('/test1',(req,res)=>{
+    var owner_id = req.body.owned_id;
+    var v_check = req.body.v_check;
+    var imageno=req.body.imageno;
+    //ar[imageno];
+    /*for(i=0;i<imageno;i++){
+        ar[0]
+    }
+    let image = req.files.img;
+    let imageName = Date.now()+'_'+req.files.img.name;
+    var elephant = new Elephant({
+        owner_id : owner_id,
+        v_check : v_check
+                           
+        });    
+        elephant.save((err , doc)=>{
+            if(err){
+                console.log(err);
+            }          
+            else{
+                image.mv('public/img/questionImg/'+imageName+'', function(err) {
+                        if (err){
+                            console.log(err);
+                            req.flash("error","File Upload Error");
+                            res.redirect('/mod/domain');
+                        } 
+                        else{
+                            req.flash('success_msg','Topic & Question created successfully');
+                            res.redirect('/dashboard');
+                        }
+                });
+            }
+        });
+            
+    });*/
 
 module.exports  = router;

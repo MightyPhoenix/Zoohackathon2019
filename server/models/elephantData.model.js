@@ -4,11 +4,11 @@ var deact_adm = mongoose.Schema({
     name:{
         type: String
     },
-    dat1:{
+    owner_id:{
         type: String
     },
-    data2:{
-        type: Number
+    v_check:{
+        type: String
     }
 });
 
