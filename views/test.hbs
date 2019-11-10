@@ -30,7 +30,7 @@
             <button class="form-control btn btn-warning" id="addmore">Click to Add</button>
         </div>
 
-        <div id="fieldset">
+        <div id="field">
 
         </div>
 
@@ -41,14 +41,14 @@
 
 </div>
 <script>
+    let i=1;
     $("#addmore").click( () => {
-        let i=1;
         let htmlString = `<div class="form-group">
                             <label>History ${i}</label>
                              <input class="form-control" type="text" placeholder="Previous Owner Name">
                              <input class="form-control" type="text" placeholder="Time Period">
                        </div>`
-        $("#fieldset").html(htmlString);
+        $("#field").html(htmlString);
         i++
     });
 </script>
