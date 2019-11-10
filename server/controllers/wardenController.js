@@ -9,6 +9,7 @@ const User = mongoose.model('User');
 const Warden = mongoose.model('Warden');
 const Owner = mongoose.model('Owner');
 const Elephant = mongoose.model('ElephantData');
+const ElephantCreateRequest = mongoose.model('ElephantCreateRequest');
 //Routes
 
 router.get('/approve',function(req,res){
@@ -84,4 +85,11 @@ router.get('/test1',function(req,res){
             
     });*/
 
+router.get('check-add-elephant',function(req,res){
+    res.render('Warden/checkAddElephant');
+});
+
+router.post('/add-elephant',function(req,res){
+    
+})
 module.exports  = router;

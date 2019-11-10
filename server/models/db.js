@@ -13,3 +13,4 @@ require('./admin.model');
 require('./warden.model');
 require('./owner.model');
 require('./users.model');
+require('./eleRequest.model');

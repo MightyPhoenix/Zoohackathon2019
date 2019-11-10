@@ -1,0 +1,21 @@
+ <table class="table table-striped">
+        <thead>
+                <tr>
+                <th>Email</th>
+                <th>About</th>
+                <th>Data</th>
+                </tr>
+        </thead>
+        <tbody>
+                {{#each list}}
+                <tr>
+                <td>{{this.user}}</td>
+                <td>{{this.data}}</td>
+                <td><form action="/warden/approve-elephant" method="post">
+                        <input type="hidden" name="_id" value="{{this._id}}">
+                        <input type="submit" value="Verify">
+                </form></td>
+                </tr>
+                {{/each}}
+        </tbody>        
+</table>
