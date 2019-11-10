@@ -76,6 +76,9 @@ router.post('/add-elephant',function(req,res){
     let history = req.body.history;
     let vet = req.body.v_check;
     let warden = req.user._id;
+    let lat = req.body.lat;
+    let lng = req.body.lng;
+
     console.log(owner,alias,history,vet);
     res.redirect('/')
 
@@ -85,7 +88,9 @@ router.post('/add-elephant',function(req,res){
         warden : warden,
         history : history,
         image : "/public/images/",
-        v_check : vet
+        v_check : vet,
+        lat : lat,
+        lng : lng
     });
     elephant.save((err,doc)=>{
         if (err) {console.log(err);}
