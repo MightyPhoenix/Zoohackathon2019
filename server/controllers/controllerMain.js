@@ -78,7 +78,9 @@ router.get('/elephantTrack/:username',(req,res,next)=>{
     Elephant.findOne({username : username},(err,doc)=>{
         let lat = doc.lat;
         let lng = doc.lng;
+        console.log(lat,lng);
         res.render('elephantTrack',{lat : lat, lng : lng});
+
     });
 })
 

@@ -6,7 +6,7 @@
 
 
 <p id="alert"></p>
-<button onclick="getLocation()">Try It</button>
+<button onclick="getLocation({{lat}},{{lng}})">Try It</button>
 
 <p><strong>Note:</strong> The geolocation property is not supported in IE8 and earlier versions.</p>
 
@@ -14,19 +14,19 @@
 <script>
     var x = document.getElementById("demo");
 
-    function getLocation() {
+    function getLocation(l1,l2) {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
+            navigator.geolocation.getCurrentPosition(showPosition,l1,l2);
         } else {
             x.innerHTML = "Geolocation is not supported by this browser.";
         }
     }
 
-    function showPosition(position) {
+    function showPosition(position,l1,l2) {
         let currentLat = position.coords.latitude;
         let currentLng = position.coords.longitude;
-        let Lat = {{lat}};
-        let lng = {{lng}};
+        let Lat = l1;
+        let lng = l2;
 
         if(currentLng-lng!=0 && currentLat-lat!=0){
             document.getElementById('alert').innerHTML = "Alert";
