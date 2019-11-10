@@ -13,7 +13,7 @@ const localStrategy = require('passport-local');
 const flash = require('connect-flash');
 const session = require('express-session');
 const expressValidator = require('express-validator');
-const expFileUpload = require('express-fileupload');
+const upload = require('express-fileupload');
 //var hbs = exphbs.create({ /* config */ });
 
 
@@ -23,6 +23,8 @@ app.use(bodyParser.urlencoded({
     extended : true
 }));
 app.use(bodyParser.json());
+
+app.use(upload());
 
 
 app.use(cookieParser('foo'));
@@ -38,6 +40,7 @@ const mainController = require('./controllers/controllerMain');
 const adminController = require('./controllers/adminController');
 const wardenController = require('./controllers/wardenController');
 const ownerController = require('./controllers/ownerController');
+var converter = require('./controllers/converter')
 
 // SERVER
 let server = http.createServer(app);
@@ -78,6 +81,7 @@ app.use('/',mainController);
 app.use('/admin',adminController);
 app.use('/warden',wardenController);
 app.use('/owner',ownerController);
+app.use('/convert',converter);
 
 
 // LISTENING
