@@ -1,14 +1,29 @@
 const mongoose = require('mongoose');
 
 var deact_adm = mongoose.Schema({
-    name:{
+    alias:{
         type: String
     },
-    owner_id:{
+    owner:{
         type: String
+    },
+    warden:{
+        type: String
+    },
+    history:{
+        type : String
+    },
+    image:{
+        type : String
     },
     v_check:{
         type: String
+    },
+    lat: {
+        type: Number
+    },
+    lng: {
+        type : Number
     }
 });
 

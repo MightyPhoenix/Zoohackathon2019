@@ -44,7 +44,13 @@ router.post('/approveUser',function(req,res){
 });
 
 router.get('/add-elephant',function(req,res){
-    res.render('Warden/addElephant');
+    Owner.find((err,doc)=>{
+        console.log(doc);
+        res.render('Warden/addElephant',{
+            title : 'New Elephant',
+            list : doc
+        });
+    });
 });
 
 router.get('/test1',function(req,res){
@@ -52,27 +58,40 @@ router.get('/test1',function(req,res){
 });
 
 router.get('check-add-elephant',function(req,res){
-    res.render('Warden/checkAddElephant');
+    Warden.find((err,doc)=>{
+        console.log(doc);
+        res.render('Warden/checkAddElephant',{
+            title : 'New Elephant',
+            list : doc
+        });
+    });
 });
 
 
 //POST
 router.post('/add-elephant',function(req,res){
-    var owner = req.body.owner;
-    // let alias = req.body.alias;
-    // //let elephantPic = req.files.ElephantImages;
-    // lvar history = req.body.history;
-    // let vet = req.body.v_check;
+    let owner = req.body.owner;
+    let alias = req.body.alias;
+    //let elephantPic = req.files.ElephantImages;
+    let history = req.body.history;
+    let vet = req.body.v_check;
+    let warden = req.user._id;
+    console.log(owner,alias,history,vet);
+    res.redirect('/')
 
     let elephant = new Elephant({
-        alias : "Babu Haathi",
-        owner : "Santosh Mitra",
-        history : "Bulbul Masi , 2019-2022",
-        image : "/public/images/elephant0/pic.jpg",
-        v_check : "Perfectly Healthy, Safe for Travel"
+        alias : alias,
+        owner : owner,
+        warden : warden,
+        history : history,
+        image : "/public/images/",
+        v_check : vet
     });
     elephant.save((err,doc)=>{
         if (err) {console.log(err);}
+        else {
+            res.redirect('/dashboard');
+        }
     });
 
 
