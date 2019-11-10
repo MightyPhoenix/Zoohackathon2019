@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p><strong>Note:</strong> The geolocation property is not supported in IE8 and earlier versions.</p>
+
+<form action="/add-location" method="POST">
+  <div id="demo"></div>
+</form>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  let text = `
+  <input type='hidden' name='lat' value='${position.coords.latitude}'>
+  <input type='hidden' name='lng' value='${position.coords.longitude}'>
+  <input type='hidden' name='id' value={{id}}>
+  <button type="submit">Submit</button>
+  `;
+  x.innerHTML = text;
+}
+</script>
+
+</body>
+</html>
