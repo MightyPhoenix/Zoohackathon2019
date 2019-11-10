@@ -7,29 +7,29 @@
     <form enctype="multipart/form-data" action="/" method="POST">
         <div class="form-group">
             <label>Select Owner</label>
-            <select class="form-control">
-                <option>Santosh</option>
-                <option>Rakesh</option>
-                <option>Mukesh</option>
-                <option>Babu</option>
-                <option>Chotu</option>
+            <select class="form-control" name="owner">
+                <option value="Santosh">Santosh</option>
+                <option value="Rakesh">Rakesh</option>
+                <option value="Mukesh">Mukesh</option>
+                <option value="Babu">Babu</option>
+                <option value="Chotu">Chotu</option>
             </select>
         </div>
 
         <div class="form-group">
             <label>Elephant Alias</label>
-            <input class="form-control" type="text" placeholder="Known Aliases">
+            <input class="form-control" type="text" name="alias" placeholder="Known Aliases">
         </div>
 
        
         <div class="form-group">
             <label>Upload Trunk Picture</label>
-            <input class="form-control-file" name="elephantImages" type="file" multiple>
+            <input class="form-control-file" name="ElephantImages" type="file" multiple>
         </div>
 
         <div class="form-group">
             <label>Add History Of Elephant</label>
-            <input class="form-control" name="elephantHistory" type="text" placeholder="Enter History">
+            <input class="form-control" name="history" type="text" placeholder="Enter History">
         </div>
 
         <div class="form-group">
