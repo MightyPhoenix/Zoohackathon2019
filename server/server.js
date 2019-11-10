@@ -7,13 +7,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-var passport = require('passport');
-var localStrategy = require('passport-local');
+const passport = require('passport');
+const localStrategy = require('passport-local');
 
-var flash = require('connect-flash');
-var session = require('express-session');
-var expressValidator = require('express-validator');
-var expFileUpload = require('express-fileupload');
+const flash = require('connect-flash');
+const session = require('express-session');
+const expressValidator = require('express-validator');
+const expFileUpload = require('express-fileupload');
 //var hbs = exphbs.create({ /* config */ });
 
 

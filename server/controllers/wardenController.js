@@ -2,6 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
 
 //Models
 
@@ -49,56 +51,31 @@ router.get('/test1',function(req,res){
     res.render('Warden/test1')
 });
 
-/*router.post('/test1',(req,res)=>{
-    var owner_id = req.body.owned_id;
-    var v_check = req.body.v_check;
-    var imageno=req.body.imageno;
-    //ar[imageno];
-    /*for(i=0;i<imageno;i++){
-        ar[0]
-    }
-    let image = req.files.img;
-    let imageName = Date.now()+'_'+req.files.img.name;
-    var elephant = new Elephant({
-        owner_id : owner_id,
-        v_check : v_check
-                           
-        });    
-        elephant.save((err , doc)=>{
-            if(err){
-                console.log(err);
-            }          
-            else{
-                image.mv('public/img/questionImg/'+imageName+'', function(err) {
-                        if (err){
-                            console.log(err);
-                            req.flash("error","File Upload Error");
-                            res.redirect('/mod/domain');
-                        } 
-                        else{
-                            req.flash('success_msg','Topic & Question created successfully');
-                            res.redirect('/dashboard');
-                        }
-                });
-            }
-        });
-            
-    });*/
-
 router.get('check-add-elephant',function(req,res){
     res.render('Warden/checkAddElephant');
 });
 
+
+//POST
 router.post('/add-elephant',function(req,res){
-    let owner = req.body.owner;
-    let alias = req.body.alias;
-    let elephantPic = req.files.ElephantImages;
-    let history = req.body.history;
-    let vet = req.body.v_check;
+    var owner = req.body.owner;
+    // let alias = req.body.alias;
+    // //let elephantPic = req.files.ElephantImages;
+    // lvar history = req.body.history;
+    // let vet = req.body.v_check;
 
-    console.log(owner,alias,elephantPic,history,vet);
-    res.redirect('/warden/add-elephant');
+    let elephant = new Elephant({
+        alias : "Babu Haathi",
+        owner : "Santosh Mitra",
+        history : "Bulbul Masi , 2019-2022",
+        image : "/public/images/elephant0/pic.jpg",
+        v_check : "Perfectly Healthy, Safe for Travel"
+    });
+    elephant.save((err,doc)=>{
+        if (err) {console.log(err);}
+    });
 
 
-})
+
+});
 module.exports  = router;
