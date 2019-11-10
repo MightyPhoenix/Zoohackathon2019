@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 //MODELS
 let Owner = mongoose.model('Owner');
 let User = mongoose.model('User');
+let ElephantCreateRequest = mongoose.model('ElephantCreateRequest');
 
 
 router.post('/register',function(req,res){
@@ -43,6 +44,28 @@ router.post('/register',function(req,res){
 
     router.get('/request-movement',function(req,res){
             res.render('Owner/requestMovement');
+    });
+
+    router.get('/request-add-elephant',function(req,res){
+        res.render('Owner/addElephantRequest');
+    });
+
+    router.post('/request-add-elephant',function(req,res){
+        var data = req.body.data;
+        var userEmail = req.user.username;
+        Owner.findOne({email : userEmail},function(err,doc){
+            if(err) throw err;
+            var state = doc.state;
+            var newElephant = new ElephantCreateRequest();
+            newElephant.data = data;
+            newElephant.user = userEmail;
+            newElephant.state = state;
+            newElephant.save(function(err,doc){
+                if(err) throw err;
+                res.redirect('/');
+            });
+        });
+
     });
 
 module.exports = router;
