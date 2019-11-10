@@ -53,6 +53,10 @@ router.get('/add-elephant',function(req,res){
     });
 });
 
+router.get('/add-location',(req,res)=>{
+    res.render('warden/addLocation')
+})
+
 router.get('/test1',function(req,res){
     res.render('Warden/test1')
 });
@@ -79,9 +83,6 @@ router.post('/add-elephant',function(req,res){
     let lat = req.body.lat;
     let lng = req.body.lng;
 
-    console.log(owner,alias,history,vet);
-    res.redirect('/')
-
     let elephant = new Elephant({
         alias : alias,
         owner : owner,
@@ -89,17 +90,25 @@ router.post('/add-elephant',function(req,res){
         history : history,
         image : "/public/images/",
         v_check : vet,
-        lat : lat,
-        lng : lng
     });
     elephant.save((err,doc)=>{
         if (err) {console.log(err);}
         else {
-            res.redirect('/dashboard');
+            res.render('Warden/addLocation',{id : doc._id});
         }
     });
 
+router.post('/add-location',(req,res)=>{
+    let elephant = req.body.id;
+    let lat = req.body.lat;
+    let lng = req.body.lng;
 
+    Elephant.findOneAndUpdate({_id : elephant},{lat : lat, lng :lng},function (err,doc0) {
+        if (err) throw (err);
+        res.redirect('/')
+    });
+
+})
 
 });
 module.exports  = router;

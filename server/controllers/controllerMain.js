@@ -73,6 +73,15 @@ router.get('/test',(req, res, next)=>{
     res.render('test', { title: 'Test' });
 });
 
+router.get('/elephantTrack/:username',(req,res,next)=>{
+    let username = req.param.username;
+    Elephant.findOne({username : username},(err,doc)=>{
+        let lat = doc.lat;
+        let lng = doc.lng;
+        res.render('elephantTrack',{lat : lat, lng : lng});
+    });
+})
+
 //POST
 
 router.post('/login',passport.authenticate('local',

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/zoohackathon',{useNewUrlParser : true , useUnifiedTopology: true },function(err){
+mongoose.connect('mongodb://localhost:27017/zoohackathon',{useNewUrlParser : true , useUnifiedTopology: true , useFindAndModify : false},function(err){
 
         if(!err)
                 console.log('MongoDB connected');
