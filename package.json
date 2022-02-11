@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "cookie-parser": "^1.4.4",
-    "express-handlebars": "^3.1.0",
+    "express-handlebars": "^5.3.1",
     "nodemailer": "^6.3.1",
     "nodemon": "^1.19.4"
   }
